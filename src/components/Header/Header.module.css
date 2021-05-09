@@ -1,0 +1,31 @@
+
+.header{
+    grid-area: h;
+    background-color:lightgreen;
+    }
+    header img{
+      width: 40px;
+    }
+    .loginBlock{
+      display: flex;
+flex-direction: row;
+      width: 100px;
+      height: 40px;
+      float: right;
+      margin: 10px;
+    }
+    .loginBlock a{
+      font-weight: bold;
+text-decoration: none;
+      color: white;
+      cursor: pointer;
+
+    }
+    .preloader{
+      width: 40px;
+      height: 40px;
+    }
+    .preloader img{
+      width: 40px;
+      height: 40px;
+    }

@@ -1,0 +1,24 @@
+.content img{
+    width: 100%;
+}
+
+.ava{
+    width: 100%;
+}
+.contentInfo{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    padding: 10px;
+}
+.fullName::first-letter{
+    text-transform: uppercase;
+}
+
+
+
+
+
+.description{
+width: 100%;
+
+}

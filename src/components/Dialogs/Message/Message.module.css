@@ -1,0 +1,8 @@
+.message{
+    font-style: italic;
+    
+    }
+    .message img{
+        width: 30px;
+        border-radius: 30px;
+    }

@@ -1,0 +1,45 @@
+.usersPage{
+    padding: 20px;
+
+}
+.image button{
+    width: 100%;
+    background-color: aquamarine;
+    margin: 5px auto;
+    color: black;
+font-weight: bold;    
+    
+}
+
+.user{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.userPhoto{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.about{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid aqua;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+}
+.name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.selectedPage{
+    font-weight: bold;
+}
+.usersPage span{
+    cursor: pointer;
+}
+button:disabled{
+    background-color: lightgrey;
+}
