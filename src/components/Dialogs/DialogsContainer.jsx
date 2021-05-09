@@ -19,4 +19,5 @@ export const DialogsContainer = () => {
             addMessage={handleAddMessage}
         />
     )
+    
 }
