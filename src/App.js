@@ -12,10 +12,7 @@ import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import { Button } from 'antd';
-
-
-const DialogsContainer=React.lazy(()=>import('./components/Dialogs/DialogsContainer'))
-
+import { DialogsContainer } from './components/Dialogs/DialogsContainer';
 
 const App = (props) => {
   return (
@@ -30,10 +27,7 @@ const App = (props) => {
       <Route path='/profile/:userId?'
        render={()=><ProfileContainer store={props.store}  />} />
         <Route path='/dialogs' 
-        render={()=>  { return <React.Suspense fallback={<div>Завантаження...</div>}>
-        <DialogsContainer />
-      </React.Suspense>  }}
-               
+        render={()=>  <DialogsContainer /> }
          />
          
         <Route path='/news' component={News} />

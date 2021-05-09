@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { addMessage } from '../../redux/dialogsReducer'
 
-import Dialogs from './Dialogs';
+import {Dialogs} from './Dialogs';
 
 export const DialogsContainer = () => {
     const state = useSelector(state => state.messagePage);
