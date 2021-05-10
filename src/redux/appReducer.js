@@ -2,41 +2,32 @@
 import { auth } from "./authReducer";
 
 const SET_INITIALIZED = 'SET_INITIALIZED';
-
 let initialState = {
-    initialized:false
+    initialized: false
 };
-
-
 const appReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case SET_INITIALIZED:
-            
             return {
                 ...state,
-                initialized:true
+                initialized: true
             }
-            
         default:
             return state;
 
     }
 }
 
-export const setInitialized= () => {
+export const setInitialized = () => {
     return {
         type: SET_INITIALIZED
-            }
+    }
 }
 
-
-export const initializeApp=()=>(dispatch)=>{
-    
-    dispatch(auth()).then(()=>{
+export const initializeApp = () => (dispatch) => {
+    dispatch(auth()).then(() => {
         dispatch(setInitialized())
     })
- 
 }
 
 export default appReducer;

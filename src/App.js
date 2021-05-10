@@ -3,7 +3,7 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import {  Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
-import FriendsContainer from './components/Friends/FriendsContainer';
+import {FriendsContainer} from './components/Friends/FriendsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import  Login  from './components/Login/Login';
 import Music from './components/Music/Music';

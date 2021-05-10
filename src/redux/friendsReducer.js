@@ -1,9 +1,9 @@
 import { followAPI, usersAPI } from '../api/api';
 
-
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USER';
+const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
@@ -15,15 +15,10 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     isFollowProcess: []
-
 };
-
 const friendsReducer = (state = initialState, action) => {
-
     switch (action.type) {
-
         case FOLLOW:
-
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -47,6 +42,10 @@ const friendsReducer = (state = initialState, action) => {
             return {
                 ...state, users: action.users
             }
+        case SET_PAGE_SIZE:
+            return {
+                ...state, pageSize: action.pageSize
+            }
         case SET_CURRENT_PAGE:
             return {
                 ...state, currentPage: action.currentPage
@@ -61,15 +60,13 @@ const friendsReducer = (state = initialState, action) => {
             }
         case IS_FOLLOW_PROCESS:
             return {
-                ...state, 
-                isFollowProcess: action.toggle 
-                ? [...state.isFollowProcess,action.userId]
-                :state.isFollowProcess.filter(userId=>userId!==action.userId)
+                ...state,
+                isFollowProcess: action.toggle
+                    ? [...state.isFollowProcess, action.userId]
+                    : state.isFollowProcess.filter(userId => userId !== action.userId)
             }
-
         default:
             return state;
-
     }
 }
 export const followSuccess = (userId) => {
@@ -80,7 +77,6 @@ export const followSuccess = (userId) => {
 }
 
 export const unfollowSuccess = (userId) => {
-
     return {
         type: UNFOLLOW,
         userId
@@ -118,56 +114,41 @@ export const toggleFollowProcess = (toggle, userId) => {
         userId
     }
 }
+export const setPageSize = (pageSize) => {
+    return { type: SET_PAGE_SIZE, pageSize }
+}
 
-
-
-export const getUsers=(currentPage,pageSize)=>{
-    
-    return (dispatch)=>{
-       
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
         dispatch(toggleIsFetching(true));
-    
-    usersAPI.getUsers(currentPage,pageSize).then(response => {
-        
-      dispatch(toggleIsFetching(false));
-    
-      dispatch(setUsers(response.data.items));
-      dispatch(setTotalUsersCount(response.data.totalCount));
-    
-    })
+        usersAPI.getUsers(currentPage, pageSize).then(response => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(response.data.items));
+            dispatch(setTotalUsersCount(response.data.totalCount));
+        })
     }
 }
 
-export const follow=(usersId)=>{
-    return(dispatch)=>{
-        dispatch(toggleFollowProcess(true,usersId))
-    
+export const follow = (usersId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProcess(true, usersId))
         followAPI.postFollow(usersId).then(data => {
             if (data.resultCode === 0) {
                 dispatch(followSuccess(usersId));
-    
             }
-           dispatch(toggleFollowProcess(false,usersId)) 
-    
+            dispatch(toggleFollowProcess(false, usersId))
         })
     }
 }
-export const unfollow=(usersId)=>{
-    return(dispatch)=>{
-        dispatch(toggleFollowProcess(true,usersId))
-    
+export const unfollow = (usersId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProcess(true, usersId))
         followAPI.deleteFollow(usersId).then(data => {
             if (data.resultCode === 0) {
                 dispatch(unfollowSuccess(usersId));
-    
             }
-           dispatch(toggleFollowProcess(false,usersId)) 
-    
+            dispatch(toggleFollowProcess(false, usersId))
         })
     }
 }
-
-
-
 export default friendsReducer;
-

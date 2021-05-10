@@ -1,6 +1,4 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-
-
 let initialState = {
     message: [
         { id: 1, message: 'Hi' },
@@ -16,9 +14,7 @@ let initialState = {
         { id: 5, name: 'Dima' }
     ],
     newMessageText: 'Hey,I am react'
-
 };
-
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
@@ -31,17 +27,14 @@ const dialogsReducer = (state = initialState, action) => {
             }
         default:
             return state;
-
     }
 }
 export const addMessage = (text) => {
     return {
         type: ADD_MESSAGE,
         text
-
     }
 }
-
 
 export default dialogsReducer;
 

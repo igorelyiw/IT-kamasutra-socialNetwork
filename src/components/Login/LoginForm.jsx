@@ -1,7 +1,6 @@
-import { Formik, useField,Form } from 'formik';
+import { Formik, useField, Form } from 'formik';
 import React from 'react';
-import { connect } from 'react-redux';
-import login from '../../redux/authReducer';
+
 import * as Yup from 'yup'
 
 export const CustomTextInput = ({ label, ...props }) => {
@@ -19,13 +18,12 @@ export const CustomTextInput = ({ label, ...props }) => {
         </div>
     )
 }
-const CustomCheckbox = ({  ...props }) => {
-    const [field, meta] = useField(props,'checkbox');
+const CustomCheckbox = ({ ...props }) => {
+    const [field, meta] = useField(props, 'checkbox');
     return (
         <div>
             <label className="checkbox"></label>
             <input type="checkbox" {...field} {...props} />
-            
             {meta.touched && meta.error
                 ? (
                     <div className='error'>{meta.error}</div>
@@ -59,13 +57,12 @@ const LoginForm = (props) => {
                 }, 3000);
             }}
         >
-<Form>
-    <CustomTextInput label="email" name="email" type="email" placeholder="write your email" />
-    <CustomTextInput label="password" name="password" type="password" placeholder="write your password" />
-    <CustomCheckbox name="rememberMe">Remember Me</CustomCheckbox>
-</Form>
-<button type="submit" >Submit</button>
-
+            <Form>
+                <CustomTextInput label="email" name="email" type="email" placeholder="write your email" />
+                <CustomTextInput label="password" name="password" type="password" placeholder="write your password" />
+                <CustomCheckbox name="rememberMe">Remember Me</CustomCheckbox>
+            </Form>
+            <button type="submit" >Submit</button>
         </Formik>
     )
 }
