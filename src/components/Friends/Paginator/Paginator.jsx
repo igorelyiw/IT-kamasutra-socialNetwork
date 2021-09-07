@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import s from './Paginator.module.css';
 
 const Paginator = (props ) => {

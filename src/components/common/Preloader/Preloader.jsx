@@ -5,10 +5,6 @@ let Preloader = (props) => {
     <div >
       <img src={preloader} />
     </div>
-
-
-
-
   </>
 }
 export default Preloader;

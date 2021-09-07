@@ -2,8 +2,25 @@
 
 .postsBlock{
   padding: 10px;
+
+}
+.postsWrapper{
+  padding:24px;
+
+}
+.textareaCustom{
+  width:100%;
+  height:75px;
+  border:1px solid black;
+  border-radius:5px;
+  resize:none;
 }
 .postsBlock button{
 margin: 10px;
 background-color: green;
+color:white;
+}
+.submitButton{
+  width:100px;
+  height:25px;
 }

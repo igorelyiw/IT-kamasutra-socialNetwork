@@ -4,10 +4,19 @@ import s from './Dialogs.module.css'
 import Message from './Message/Message';
 import {DialogItem} from './DialogItem/DialogItem';
 import { useFormik } from 'formik';
+import { FC } from 'react';
+import { InitialStateType } from '../../redux/dialogsReducer';
 
-export const Dialogs = (props) => {
-    let dialogElements = props.dialog.map((d) => <DialogItem name={d.name} id={d.id} />);
-    let messageElements = props.message.map((m) => <Message message={m.message} />)
+type PropsType={
+    messages:InitialStateType,
+    addMessage:(messageText:string)=>void
+
+}
+export const Dialogs:FC<PropsType> = props => {
+    const {messages}=props
+        
+    let dialogElements = messages.dialog.map((d) => <DialogItem key={d.id} name={d.name} id={d.id} />);
+    let messageElements = messages.message.map((m) => <Message key={m.id} message={m.message} />)
       return (
         <div className={s.dialogs} >
             <div className={s.dialogItems}>
@@ -22,7 +31,10 @@ export const Dialogs = (props) => {
     )
 }
 
-const AddMessageForm = (props) => {
+type PropsFormType={
+    addMessage:(str:string)=>void
+}
+const AddMessageForm:FC<PropsFormType> = (props) => {
     const formik = useFormik({
         initialValues: {
             message: ''
@@ -32,7 +44,6 @@ const AddMessageForm = (props) => {
             actions.resetForm({
                 values:{
             message: ''
-
                 }
             })
         }

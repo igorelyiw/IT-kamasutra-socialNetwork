@@ -3,6 +3,8 @@ import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css'
 import userImage from '../../../assets/images/user.png'
 import ProfileStatusWithHooks from '../ProfileStatus/ProfileStatusWithHooks';
+
+
 const ProfileInfo=(props)=>{
  
   if(!props.profile){
@@ -10,10 +12,8 @@ const ProfileInfo=(props)=>{
 
   }
 const mainPhotoSelected=(e)=>{
- 
-props.savePhoto(e.target.files[0])
-  
-}
+ props.savePhoto(e.target.files[0])
+ }
     return(
       
       <div className={s.profileInfo} >
